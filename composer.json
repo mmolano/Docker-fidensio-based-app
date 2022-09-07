@@ -1,0 +1,60 @@
+{
+    "name": "lumen",
+    "description": "A package for cards management",
+    "authors": [
+        {
+            "name": "Miguel Molano",
+            "email": "miguel@fidensio.com",
+            "role": "Developer"
+        }
+    ],
+    "keywords": ["framework", "laravel", "lumen"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^7.2",
+        "flipbox/lumen-generator": "^6.0",
+        "laravel/lumen-framework": "^5.8.13",
+        "squizlabs/php_codesniffer": "^3.5",
+        "stripe/stripe-php": "^6.31"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.4",
+        "phpunit/phpunit": "^8.0",
+        "mockery/mockery": "^1.0"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Cards\\CardService\\": "packages/cards/cardservice/src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cards\\CardService\\CardServiceProvider"
+            ]
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
